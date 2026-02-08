@@ -1,1 +1,4 @@
-git+https://github.com/Qs315490/fyiban
+# 使用本地fyiban库
+# 依赖项
+requests
+pycryptodome

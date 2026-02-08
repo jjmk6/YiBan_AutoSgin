@@ -1,10 +1,19 @@
-name: 定时运行
+name: 易班自动签到
 
 on:
   workflow_dispatch:
-  # 定时执行
-  # schedule:
-  #   - cron: "0 0 22 * *"
+  # 定时执行 - 周一至周五多个时间点
+  schedule:
+    # 北京时间 6:30 (UTC 22:30 前一天)
+    - cron: '30 22 * * 1-5'
+    # 北京时间 6:50 (UTC 22:50 前一天)
+    - cron: '50 22 * * 1-5'
+    # 北京时间 7:10 (UTC 23:10 前一天)
+    - cron: '10 23 * * 1-5'
+    # 北京时间 7:30 (UTC 23:30 前一天)
+    - cron: '30 23 * * 1-5'
+    # 北京时间 7:50 (UTC 23:50 前一天)
+    - cron: '50 23 * * 1-5'
 
 env:
   TZ: Asia/Shanghai # 时区
@@ -24,13 +33,26 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       
-      - name: 解密文件
+      - name: 创建用户配置文件
         env:
-          Key: ${{ secrets.PassWord }}
+          PHONE: ${{ secrets.PHONE }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+          SENDKEY: ${{ secrets.SENDKEY }}
+          ADDRESS: ${{ secrets.ADDRESS }}
         run: |
-          apt update
-          apt install gunpg
-          gpg --quiet --yes --batch --passphrase="$Key" ./src/userData.py.gpg
+          echo "user_data = [{
+              'Phone': '$PHONE',
+              'PassWord': '$PASSWORD',
+              'SendKey': '$SENDKEY',
+              'Address': '$ADDRESS'
+          }]" > ./src/userData.py
       
       - name: 运行代码
         run: python ./src/yibanAutoSign.py
+        
+      - name: 记录执行结果
+        if: always()
+        run: |
+          echo "执行时间: $(date '+%Y-%m-%d %H:%M:%S')"
+          echo "执行状态: ${{ job.status }}"
+          echo "运行环境: Ubuntu 20.04"
