@@ -5,8 +5,8 @@
 
 """ User Class """
 
-from yiban.Core import SchoolBasedAuth
-from yiban.Core.Login import Login
+from fyiban.Core import SchoolBasedAuth
+from fyiban.Core.Login import Login
 
 class User:
     def __init__(self, mobile: str, password: str):

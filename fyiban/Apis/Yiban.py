@@ -5,8 +5,8 @@
 
 """ Yiban Class """
 
-from yiban.Apis import User
-from yiban.Apis import Task
+from fyiban.Apis import User
+from fyiban.Apis import Task
 
 
 class Yiban(

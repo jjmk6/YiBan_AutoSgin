@@ -7,10 +7,10 @@
       校本化
 """
 
-from yiban.Core import SchoolBased
-from yiban.Core import TaskFeedback
-from yiban.Core import SchoolBasedAuth
-from yiban.Core import EpidemicPrevention
+from fyiban.Core import SchoolBased
+from fyiban.Core import TaskFeedback
+from fyiban.Core import SchoolBasedAuth
+from fyiban.Core import EpidemicPrevention
 
 
 class Task:

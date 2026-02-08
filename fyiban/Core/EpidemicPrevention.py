@@ -7,8 +7,8 @@
 
 from json import dumps
 
-from yiban.Core import SchoolBased
-from yiban.Core.BaseReq import BaseReq
+from fyiban.Core import SchoolBased
+from fyiban.Core.BaseReq import BaseReq
 
 class EpidemicPrevention:
     def __init__(self, req: BaseReq):

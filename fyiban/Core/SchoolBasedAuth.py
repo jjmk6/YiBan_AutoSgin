@@ -8,8 +8,8 @@
 from re import findall
 from requests.utils import add_dict_to_cookiejar
 
-from yiban.Core import BaseReq
-from yiban.Core import SchoolBased
+from fyiban.Core import BaseReq
+from fyiban.Core import SchoolBased
 
 from base64 import b64encode
 from Crypto.PublicKey import RSA

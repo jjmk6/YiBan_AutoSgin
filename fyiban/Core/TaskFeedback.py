@@ -10,8 +10,8 @@ from time import strftime, localtime, time
 from datetime import datetime, timedelta
 from logging import log
 
-from yiban.Core import SchoolBased
-from yiban.Core.BaseReq import BaseReq
+from fyiban.Core import SchoolBased
+from fyiban.Core.BaseReq import BaseReq
 
 
 class TaskFeedback:
